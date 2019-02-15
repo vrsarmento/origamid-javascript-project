@@ -1,7 +1,7 @@
 // exemple
 import _ from 'lodash'; // sem necessidade de informar todo o caminho do módulo
 
-import initScrollInternalLinks from './modules/smooth-scroll.js';
+import ScrollInternalLinks from './modules/smooth-scroll.js';
 import initSectionAnimationOnScroll from './modules/animation-scroll.js';
 import initAccordionNav from './modules/animation-accordion-nav.js';
 import initTabNav from './modules/animation-tab-nav.js';
@@ -13,10 +13,12 @@ import initFetchAnimals from './modules/fetch-animals.js';
 import initWorkHour from './modules/work-hour.js';
 import initFetchBitcoin from './modules/fetch-bitcoin.js';
 
+const scrollInternalLinks = new ScrollInternalLinks('[data-js="mainMenu"] a[href^="#"]');
+scrollInternalLinks.init();
+
 function initApp() {
   initTabNav();
   initAccordionNav();
-  initScrollInternalLinks();
   initSectionAnimationOnScroll();
   initModal();
   initTooltip();
