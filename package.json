@@ -1,8 +1,8 @@
 {
-  "name": "projeto",
+  "name": "projeto-animais-fantasticos-origamid",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-without-babel": "webpack --mode production js/script.js --output js/main.js",
@@ -10,7 +10,7 @@
     "build": "webpack --mode production",
     "dev": "webpack --mode development --watch"
   },
-  "author": "",
+  "author": "Victor Rocha",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
