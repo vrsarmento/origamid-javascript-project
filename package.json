@@ -1,0 +1,30 @@
+{
+  "name": "projeto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-without-babel": "webpack --mode production js/script.js --output js/main.js",
+    "dev-without-babel": "webpack --mode development --watch js/script.js --output js/main.js",
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "lodash": "^4.17.11",
+    "whatwg-fetch": "^3.0.0"
+  }
+}
