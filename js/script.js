@@ -1,6 +1,3 @@
-// exemple
-import _ from 'lodash'; // sem necessidade de informar todo o caminho do módulo
-
 import ScrollInternalLinks from './modules/smooth-scroll.js';
 import initSectionAnimationOnScroll from './modules/animation-scroll.js';
 import initAccordionNav from './modules/animation-accordion-nav.js';
@@ -30,6 +27,3 @@ function initApp() {
 }
 
 window.onload = initApp();
-
-// uso do lodash de exemplo
-// console.log(_.difference(['Banana', 'Uva'], ['Banana', 'Morango']));
