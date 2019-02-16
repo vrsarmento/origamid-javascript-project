@@ -1,30 +1,33 @@
-export default function initTabNav() {
-  const $tabMenu = document.querySelectorAll('[data-js="tabMenu"] li');
-  const $tabContent = document.querySelectorAll('[data-js="tabContent"] section');
+export default class TabNav {
+  constructor(menu, content) {
+    this.tabMenu = document.querySelectorAll(menu);
+    this.tabContent = document.querySelectorAll(content);
+    this.activeClass = 'active';
+  }
 
-  function removeActiveClassContent() {
-    $tabContent.forEach((section) => {
-      section.classList.remove('active');
+  removeActiveClassContent() {
+    this.tabContent.forEach((section) => {
+      section.classList.remove(this.activeClass);
     });
   }
 
-  function addActiveClassContent(index) {
-    removeActiveClassContent();
-    $tabContent[index].classList.add('active');
+  activeTab(index) {
+    this.removeActiveClassContent();
+    this.tabContent[index].classList.add(this.activeClass);
   }
 
-  function initEvents() {
-    $tabMenu.forEach((itemMenu, index) => {
+  addEvents() {
+    this.tabMenu.forEach((itemMenu, index) => {
       itemMenu.addEventListener('click', () => {
-        addActiveClassContent(index);
+        this.activeTab(index);
       }, false);
     });
   }
 
-  function initialize() {
-    initEvents();
-    $tabContent[0].classList.add('active');
+  init() {
+    if (this.tabMenu.length && this.tabContent.length) {
+      this.addEvents();
+      this.activeTab(0);
+    }
   }
-
-  initialize();
 }

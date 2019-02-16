@@ -1,7 +1,7 @@
 import ScrollInternalLinks from './modules/smooth-scroll.js';
 import initSectionAnimationOnScroll from './modules/animation-scroll.js';
 import AccordionNav from './modules/animation-accordion-nav.js';
-import initTabNav from './modules/animation-tab-nav.js';
+import TabNav from './modules/animation-tab-nav.js';
 import initModal from './modules/modal.js';
 import initTooltip from './modules/tooltip.js';
 import initDropDownMenu from './modules/dropdown-menu.js';
@@ -16,8 +16,10 @@ scrollInternalLinks.init();
 const accordionNav = new AccordionNav('[data-js="accordionNav"] dt');
 accordionNav.init();
 
+const tabNav = new TabNav('[data-js="tabMenu"] li', '[data-js="tabContent"] section');
+tabNav.init();
+
 function initApp() {
-  initTabNav();
   initSectionAnimationOnScroll();
   initModal();
   initTooltip();
