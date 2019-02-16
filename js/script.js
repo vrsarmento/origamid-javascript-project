@@ -1,6 +1,6 @@
 import ScrollInternalLinks from './modules/smooth-scroll.js';
 import initSectionAnimationOnScroll from './modules/animation-scroll.js';
-import initAccordionNav from './modules/animation-accordion-nav.js';
+import AccordionNav from './modules/animation-accordion-nav.js';
 import initTabNav from './modules/animation-tab-nav.js';
 import initModal from './modules/modal.js';
 import initTooltip from './modules/tooltip.js';
@@ -13,9 +13,11 @@ import initFetchBitcoin from './modules/fetch-bitcoin.js';
 const scrollInternalLinks = new ScrollInternalLinks('[data-js="mainMenu"] a[href^="#"]');
 scrollInternalLinks.init();
 
+const accordionNav = new AccordionNav('[data-js="accordionNav"] dt');
+accordionNav.init();
+
 function initApp() {
   initTabNav();
-  initAccordionNav();
   initSectionAnimationOnScroll();
   initModal();
   initTooltip();
