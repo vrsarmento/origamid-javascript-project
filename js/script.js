@@ -3,7 +3,7 @@ import initSectionAnimationOnScroll from './modules/animation-scroll.js';
 import AccordionNav from './modules/animation-accordion-nav.js';
 import TabNav from './modules/animation-tab-nav.js';
 import Modal from './modules/modal.js';
-import initTooltip from './modules/tooltip.js';
+import Tooltip from './modules/tooltip.js';
 import initDropDownMenu from './modules/dropdown-menu.js';
 import initMenuMobile from './modules/menu-mobile.js';
 import initFetchAnimals from './modules/fetch-animals.js';
@@ -22,9 +22,11 @@ tabNav.init();
 const modal = new Modal('[data-modal="open"]', '[data-modal="close"]', '[data-modal="container"]');
 modal.init();
 
+const tooltip = new Tooltip('[data-tooltip]');
+tooltip.init();
+
 function initApp() {
   initSectionAnimationOnScroll();
-  initTooltip();
   initDropDownMenu();
   initMenuMobile();
   initFetchAnimals();
