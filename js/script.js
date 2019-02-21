@@ -29,7 +29,7 @@ function initApp() {
   initSectionAnimationOnScroll();
   initDropDownMenu();
   initMenuMobile();
-  initFetchAnimals();
+  initFetchAnimals('./data/animaisapi.json', '[data-js="numbers-grid"]');
   initWorkHour();
   initFetchBitcoin();
 }
