@@ -1,5 +1,5 @@
 import ScrollInternalLinks from './modules/smooth-scroll.js';
-import initSectionAnimationOnScroll from './modules/animation-scroll.js';
+import ScrollAnimation from './modules/scroll-animation.js';
 import AccordionNav from './modules/animation-accordion-nav.js';
 import TabNav from './modules/animation-tab-nav.js';
 import Modal from './modules/modal.js';
@@ -25,8 +25,10 @@ modal.init();
 const tooltip = new Tooltip('[data-tooltip]');
 tooltip.init();
 
+const scrollAnimation = new ScrollAnimation('[data-js="sectionScroll"]');
+scrollAnimation.init();
+
 function initApp() {
-  initSectionAnimationOnScroll();
   initDropDownMenu();
   initMenuMobile();
   initWorkHour();
