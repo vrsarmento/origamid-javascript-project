@@ -1,6 +1,8 @@
 import NumbersAnimation from './numbers-animation.js';
 
-export default function initFetchAnimals() {
+export default function initFetchAnimals(url, target) {
+  const $numbersGrid = document.querySelector(target);
+
   function createAnimal(animal) {
     const div = document.createElement('div');
     div.classList.add('animal-number');
@@ -8,21 +10,26 @@ export default function initFetchAnimals() {
     return div;
   }
 
-  async function fetchAnimals(url) {
+  function fillAnimals(animal) {
+    const divAnimal = createAnimal(animal);
+    $numbersGrid.appendChild(divAnimal);
+  }
+
+  function animateNumbersAnimals() {
+    const numbersAnimation = new NumbersAnimation('[data-js="number"]', '.numbers', 'active');
+    numbersAnimation.init();
+  }
+
+  async function fetchAnimals() {
     try {
       const animalsResponse = await fetch(url);
       const animalsJSON = await animalsResponse.json();
-      const $numbersGrid = document.querySelector('[data-js="numbers-grid"]');
-      animalsJSON.forEach((animal) => {
-        const divAnimal = createAnimal(animal);
-        $numbersGrid.appendChild(divAnimal);
-      });
-      const numbersAnimation = new NumbersAnimation('[data-js="number"]', '.numbers', 'active');
-      numbersAnimation.init();
+      animalsJSON.forEach(animal => fillAnimals(animal));
+      animateNumbersAnimals();
     } catch (erro) {
       console.log(erro);
     }
   }
 
-  fetchAnimals('./data/animaisapi.json');
+  return fetchAnimals();
 }
