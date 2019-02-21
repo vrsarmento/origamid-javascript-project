@@ -6,9 +6,9 @@ import Modal from './modules/modal.js';
 import Tooltip from './modules/tooltip.js';
 import initDropDownMenu from './modules/dropdown-menu.js';
 import initMenuMobile from './modules/menu-mobile.js';
-import initFetchAnimals from './modules/fetch-animals.js';
 import initWorkHour from './modules/work-hour.js';
-import initFetchBitcoin from './modules/fetch-bitcoin.js';
+import fetchAnimals from './modules/fetch-animals.js';
+import fetchBitcoin from './modules/fetch-bitcoin.js';
 
 const scrollInternalLinks = new ScrollInternalLinks('[data-js="mainMenu"] a[href^="#"]');
 scrollInternalLinks.init();
@@ -29,9 +29,9 @@ function initApp() {
   initSectionAnimationOnScroll();
   initDropDownMenu();
   initMenuMobile();
-  initFetchAnimals('./data/animaisapi.json', '[data-js="numbers-grid"]');
   initWorkHour();
-  initFetchBitcoin();
+  fetchAnimals('./data/animaisapi.json', '[data-js="numbers-grid"]');
+  fetchBitcoin('https://blockchain.info/ticker', '[data-js="btc-price"]');
 }
 
 window.onload = initApp();
