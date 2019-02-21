@@ -1,6 +1,6 @@
 import NumbersAnimation from './numbers-animation.js';
 
-export default function initFetchAnimals(url, target) {
+export default function fetchAnimals(url, target) {
   const $numbersGrid = document.querySelector(target);
 
   function createAnimal(animal) {
