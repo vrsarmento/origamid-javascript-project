@@ -3,7 +3,8 @@ export default class ScrollAnimation {
     this.sections = document.querySelectorAll(sections);
     this.windowPosition = window.innerHeight * 0.6;
     this.activeClass = 'active';
-    this.checkDistance = this.checkDistance.bind(this);
+    this.handleFirstScroll = this.handleFirstScroll.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   getDistance() {
@@ -14,7 +15,6 @@ export default class ScrollAnimation {
         offset: Math.floor(offset - this.windowPosition),
       };
     });
-    console.log(this.distance);
   }
 
   checkDistance() {
@@ -27,20 +27,19 @@ export default class ScrollAnimation {
     });
   }
 
-  animeScroll() {
-    this.sections.forEach((section) => {
-      const sectionTop = section.getBoundingClientRect().top;
-      const isSectionVisible = (sectionTop - this.windowPosition) < 0;
-      if (isSectionVisible) {
-        section.classList.add(this.activeClass);
-      } else if (section.classList.contains(this.activeClass)) {
-        section.classList.remove(this.activeClass);
-      }
-    });
+  handleScroll() {
+    this.getDistance();
+    this.checkDistance();
+  }
+
+  handleFirstScroll() {
+    this.checkDistance();
+    this.stop();
+    window.addEventListener('scroll', this.handleScroll, false);
   }
 
   initEvents() {
-    window.addEventListener('scroll', this.checkDistance, false);
+    window.addEventListener('scroll', this.handleFirstScroll, false);
   }
 
   init() {
