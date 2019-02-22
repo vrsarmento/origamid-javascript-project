@@ -1,10 +1,12 @@
+import debounce from './debounce.js';
+
 export default class ScrollAnimation {
   constructor(sections) {
     this.sections = document.querySelectorAll(sections);
     this.windowPosition = window.innerHeight * 0.6;
     this.activeClass = 'active';
     this.handleFirstScroll = this.handleFirstScroll.bind(this);
-    this.handleScroll = this.handleScroll.bind(this);
+    this.handleScroll = debounce(this.handleScroll.bind(this), 100);
   }
 
   getDistance() {
@@ -18,6 +20,7 @@ export default class ScrollAnimation {
   }
 
   checkDistance() {
+    console.log('Debounce!');
     this.distance.forEach((section) => {
       if (window.pageYOffset > section.offset) {
         section.element.classList.add(this.activeClass);
@@ -28,13 +31,13 @@ export default class ScrollAnimation {
   }
 
   handleScroll() {
-    this.getDistance();
     this.checkDistance();
   }
 
   handleFirstScroll() {
+    this.getDistance();
     this.checkDistance();
-    this.stop();
+    window.removeEventListener('scroll', this.handleFirstScroll, false);
     window.addEventListener('scroll', this.handleScroll, false);
   }
 
@@ -52,6 +55,6 @@ export default class ScrollAnimation {
   }
 
   stop() {
-    window.removeEventListener('scroll', this.checkDistance, false);
+    window.removeEventListener('scroll', this.handleScroll, false);
   }
 }
