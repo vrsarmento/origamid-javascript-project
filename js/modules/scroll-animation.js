@@ -20,7 +20,6 @@ export default class ScrollAnimation {
   }
 
   checkDistance() {
-    console.log('Debounce!');
     this.distance.forEach((section) => {
       if (window.pageYOffset > section.offset) {
         section.element.classList.add(this.activeClass);
