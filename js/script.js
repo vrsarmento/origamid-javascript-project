@@ -6,14 +6,14 @@ import Modal from './modules/modal.js';
 import Tooltip from './modules/tooltip.js';
 import DropDownMenu from './modules/dropdown-menu.js';
 import MenuMobile from './modules/menu-mobile.js';
-import initWorkHour from './modules/work-hour.js';
+import WorkHour from './modules/work-hour.js';
 import fetchAnimals from './modules/fetch-animals.js';
 import fetchBitcoin from './modules/fetch-bitcoin.js';
 
 function initApp() {
-  initWorkHour();
   fetchAnimals('./data/animaisapi.json', '[data-js="numbers-grid"]');
   fetchBitcoin('https://blockchain.info/ticker', '[data-js="btc-price"]');
+
   const scrollInternalLinks = new ScrollInternalLinks('[data-js="mainMenu"] a[href^="#"]');
   scrollInternalLinks.init();
 
@@ -37,6 +37,9 @@ function initApp() {
 
   const menuMobile = new MenuMobile('[data-js="menu"]', '[data-js="button-menu"]');
   menuMobile.init();
+
+  const workHour = new WorkHour('[data-week]', 'opened');
+  workHour.init();
 }
 
 window.onload = initApp();
