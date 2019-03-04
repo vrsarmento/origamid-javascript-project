@@ -9,6 +9,7 @@ import MenuMobile from './modules/menu-mobile.js';
 import WorkHour from './modules/work-hour.js';
 import fetchAnimals from './modules/fetch-animals.js';
 import fetchBitcoin from './modules/fetch-bitcoin.js';
+import SlideNav from './modules/slide.js';
 
 function initApp() {
   fetchAnimals('./data/animaisapi.json', '[data-js="numbers-grid"]');
@@ -40,6 +41,9 @@ function initApp() {
 
   const workHour = new WorkHour('[data-week]', 'opened');
   workHour.init();
+
+  const slide = new SlideNav('.slide', '.slide-wrapper', 0, true, '.custom-controls');
+  slide.init();
 }
 
 window.onload = initApp();
