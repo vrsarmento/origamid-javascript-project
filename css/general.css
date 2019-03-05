@@ -186,12 +186,19 @@ body{
 }
 
 .faq-lista dt::after{
-	content: '⬎';
+	content: '';
+	background: url('../img/arrow-red.svg') no-repeat center center;
+	width: 10px;
+	height: 10px;
+	display: inline-block;
 	margin-left:10px;
+	transform: rotate(90deg);
+	transition: transform .3s;
 }
 
 .faq-lista dt.active::after{
-	content: '⬏';
+	content: '';
+	transform: rotate(-90deg);
 }
 
 .faq-lista dd{
@@ -287,6 +294,13 @@ body{
 	transform: translate3d(0, 0, 0);
 }
 
+.arrow-black {
+	background: url('../img/arrow-black.svg') no-repeat center center;
+	display: inline-block;
+	width: 8px;
+	height: 10px;
+}
+
 @media (max-width: 700px){
 	
 	.grid-container{
@@ -311,7 +325,7 @@ body{
 	}
 
 	.grid-section h1{
-		font-size: 3rem;
+		font-size: 2.5rem;
 	}
 
 	.menu{
